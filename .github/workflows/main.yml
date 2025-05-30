@@ -20,11 +20,11 @@ jobs:
           java-version: '21'
 
       - name: Build and test with Maven
-        run: mvn clean verify --file ./simple-api/pom.xml
+        run: mvn clean verify --file ./TP_Github/simple-api/pom.xml
         
       - name: Analyse de qualité avec SonarCloud
         run: |
-          cd ./simple-api
+          cd ./TP_Github/simple-api
           mvn -B verify sonar:sonar \
           -Dsonar.projectKey=chazz03_simpleapi \
           -Dsonar.organization=chazz03 \
