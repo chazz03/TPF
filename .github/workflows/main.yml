@@ -48,20 +48,20 @@ jobs:
       - name: Build image and push backend
         uses: docker/build-push-action@v6
         with: 
-          context: ./simple-api
+          context: ./TP_Github/simple-api
           tags: ${{ secrets.CHAZLINE}}/tp-devops-simple-api:latest
           push: ${{ github.ref == 'refs/heads/main' }}
  
       - name: Build image and push database
         uses: docker/build-push-action@v6
         with:
-          context: ./database
+          context: ./TP_Github/database
           tags: ${{ secrets.CHAZLINE }}/tp-devops-database:latest
           push: ${{ github.ref == 'refs/heads/main' }}
 
       - name: Build image and push httpd
         uses: docker/build-push-action@v6
         with:
-          context: ./http-server
+          context: ./TP_Github/http-server
           tags: ${{ secrets.CHAZLINE }}/tp-devops-httpd:latest
           push: ${{ github.ref == 'refs/heads/main' }}
