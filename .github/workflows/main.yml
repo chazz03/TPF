@@ -21,7 +21,8 @@ jobs:
 
       - name: Build and test with Maven
         run: mvn clean verify --file ./simple-api/pom.xml
-        name: Analyse de qualité avec SonarCloud
+        
+      - name: Analyse de qualité avec SonarCloud
         run: mvn -B verify sonar:sonar \
           -Dsonar.projectKey=simple-api \
           -Dsonar.organization=chazz03 \
