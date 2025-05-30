@@ -23,12 +23,13 @@ jobs:
         run: mvn clean verify --file ./simple-api/pom.xml
         
       - name: Analyse de qualité avec SonarCloud
-        run: mvn -B verify sonar:sonar \
+        run: |
+          cd ./simple-api
+          mvn -B verify sonar:sonar \
           -Dsonar.projectKey=simple-api \
           -Dsonar.organization=chazz03 \
           -Dsonar.host.url=https://sonarcloud.io \
-          -Dsonar.login=${{ secrets.SONAR_TOKEN }} \
-          --file ./simple-api/pom.xml
+          -Dsonar.login=${{ secrets.SONAR_TOKEN }}
 
   build-and-push-docker-image:
     needs: test-backend
