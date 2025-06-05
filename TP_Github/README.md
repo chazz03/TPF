@@ -1,4 +1,4 @@
 # TP DevOps Correction Docker
 
-Correction de la partie Docker du module DevOps. Amusez-vous bien avec GitHub Actions !
-  
+Correction de laa partie Docker du modulee DevOps. Amusez-vous bien avec GitHub Actions !
+ 
