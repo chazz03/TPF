@@ -1,0 +1,46 @@
+- name: Install python3-apt on remote (raw command)
+  raw: sudo apt-get update && sudo apt-get install -y python3-apt
+
+- name: Install required packages
+  apt:
+    name:
+      - apt-transport-https
+      - ca-certificates
+      - curl
+      - gnupg
+      - lsb-release
+    state: latest
+    update_cache: yes
+
+- name: Add Docker GPG key
+  apt_key:
+    url: https://download.docker.com/linux/debian/gpg
+    state: present
+
+- name: Add Docker APT repository
+  apt_repository:
+    repo: "deb [arch=amd64] https://download.docker.com/linux/debian {{ ansible_facts['distribution_release'] }} stable"
+    state: present
+    update_cache: yes
+
+- name: Install Docker
+  apt:
+    name: docker-ce
+    state: present
+
+- name: Install Python3 and pip3
+  apt:
+    name:
+      - python3
+      - python3-pip
+    state: present
+
+- name: Install Docker SDK for Python (for Ansible docker_* modules)
+  
+  command: pip3 install docker --break-system-package
+
+- name: Make sure Docker is running
+  service:
+    name: docker
+    state: started
+  tags: docker

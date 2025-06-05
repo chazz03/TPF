@@ -1,0 +1,20 @@
+# group_vars/all.yml
+
+# Containers names
+db_container_name: database
+api_container_name: simple-api
+proxy_container_name: httpd
+
+# Docker network
+docker_network: my-network
+
+# Database credentials
+postgres_user: usr
+postgres_password: pwd
+
+# API config (linked to DB)
+database_host: database
+database_password: pwd
+
+# Port mapping for HTTPD proxy
+proxy_port: "8080"
