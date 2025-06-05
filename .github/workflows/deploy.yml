@@ -1,0 +1,26 @@
+name: CD deploy Ansible
+
+on:
+  workflow_run:
+    workflows: ["CI devops 2025"]
+    types:
+      - completed
+
+jobs:
+  deploy:
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install SSH key
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.CHAZLINE }}
+
+      - name: Run Ansible playbook
+        run: |
+          sudo apt update
+          sudo apt install -y ansible
+          ansible-playbook -i TP_Ansible/inventories/setup.yml TP_Ansible/playbook.yml
