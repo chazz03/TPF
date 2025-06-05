@@ -2,8 +2,11 @@
   docker_container:
     name: httpd
     image: chaz01/tp-devops-httpd:latest
-    state: started
-    restart_policy: always
+    pull: "{{ docker_pull }}"
+    recreate: "{{ docker_recreate }}"
+    force_kill: "{{ docker_force_kill }}"
+    state: "{{ docker_state }}"
+    restart_policy: "{{ docker_restart_policy }}"
     published_ports:
       - "8080:80"   
     networks:

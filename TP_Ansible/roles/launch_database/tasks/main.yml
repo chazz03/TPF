@@ -2,8 +2,11 @@
   docker_container:
     name: database
     image: chaz01/tp-devops-database
-    state: started
-    restart_policy: always
+    pull: "{{ docker_pull }}"
+    recreate: "{{ docker_recreate }}"
+    force_kill: "{{ docker_force_kill }}"
+    state: "{{ docker_state }}"
+    restart_policy: "{{ docker_restart_policy }}"
     env:
       POSTGRES_USER: usr
       POSTGRES_PASSWORD: pwd

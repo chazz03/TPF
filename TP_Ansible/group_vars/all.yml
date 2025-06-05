@@ -8,6 +8,16 @@ proxy_container_name: httpd
 # Docker network
 docker_network: my-network
 
+# Docker settings communs
+docker_pull: true
+docker_recreate: true
+docker_force_kill: true
+docker_state: started
+docker_restart_policy: always
+
+# Interpreter
+ansible_python_interpreter: /usr/bin/python3
+
 # Database credentials
 postgres_user: usr
 postgres_password: pwd

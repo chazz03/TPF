@@ -3,11 +3,11 @@
   docker_container:
     name: simple-api
     image: chaz01/tp-devops-simple-api:latest
-    pull: true
-    recreate: true
-    force_kill: true
-    state: started
-    restart_policy: always
+    pull: "{{ docker_pull }}"
+    recreate: "{{ docker_recreate }}"
+    force_kill: "{{ docker_force_kill }}"
+    state: "{{ docker_state }}"
+    restart_policy: "{{ docker_restart_policy }}"
     env:
       DATABASE_HOST: database
       DATABASE_PASSWORD: pwd

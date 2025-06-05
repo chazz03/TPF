@@ -2,6 +2,13 @@
   gather_facts: true
   become: true
 
+  vars:
+    docker_pull: true
+    docker_recreate: true
+    docker_force_kill: true
+    docker_state: started
+    docker_restart_policy: always
+
   roles:
     - docker
     - create_network
