@@ -19,12 +19,11 @@ docker_restart_policy: always
 ansible_python_interpreter: /usr/bin/python3
 
 # Database credentials
-postgres_user: usr
-postgres_password: pwd
+database_host: "{{ lookup('env', 'DATABASE_HOST') }}"
+database_password: "{{ lookup('env', 'DATABASE_PASSWORD') }}"
+postgres_user: "{{ lookup('env', 'POSTGRES_USER') }}"
+postgres_password: "{{ lookup('env', 'POSTGRES_PASSWORD') }}"
 
-# API config (linked to DB)
-database_host: database
-database_password: pwd
 
 # Port mapping for HTTPD proxy
 proxy_port: "8080"
