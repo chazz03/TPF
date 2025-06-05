@@ -23,6 +23,8 @@ database_host: "{{ lookup('env', 'DATABASE_HOST') }}"
 database_password: "{{ lookup('env', 'DATABASE_PASSWORD') }}"
 postgres_user: "{{ lookup('env', 'POSTGRES_USER') }}"
 postgres_password: "{{ lookup('env', 'POSTGRES_PASSWORD') }}"
+docker_network: "{{ lookup('env', 'DOCKER_NETWORK') }}"
+
 
 
 # Port mapping for HTTPD proxy
