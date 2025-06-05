@@ -1,6 +1,6 @@
 - name: Run HTTPD reverse proxy container
   docker_container:
-    name: httpd
+    name: "{{ proxy_container_name }}"
     image: chaz01/tp-devops-httpd:latest
     pull: "{{ docker_pull }}"
     recreate: "{{ docker_recreate }}"
@@ -8,6 +8,8 @@
     state: "{{ docker_state }}"
     restart_policy: "{{ docker_restart_policy }}"
     published_ports:
-      - "8080:80"   
+      - "{{ proxy_port }}:80"
     networks:
-      - name: my-network
+      - name: "{{ docker_network }}"
+        aliases:
+          - "{{ proxy_container_name }}"

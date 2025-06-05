@@ -1,15 +1,16 @@
-
 - name: Run simple-api container
   docker_container:
-    name: simple-api
+    name: "{{ api_container_name }}"
     image: chaz01/tp-devops-simple-api:latest
-    pull: "{{ docker_pull }}"
-    recreate: "{{ docker_recreate }}"
-    force_kill: "{{ docker_force_kill }}"
-    state: "{{ docker_state }}"
-    restart_policy: "{{ docker_restart_policy }}"
+    pull: true
+    recreate: true
+    force_kill: true
+    state: started
+    restart_policy: always
     env:
-      DATABASE_HOST: database
-      DATABASE_PASSWORD: pwd
+      DATABASE_HOST: "{{ database_host }}"
+      DATABASE_PASSWORD: "{{ database_password }}"
     networks:
-      - name: my-network
+      - name: "{{ docker_network }}"
+        aliases:
+          - "{{ api_container_name }}"
