@@ -1,6 +1,6 @@
 - name: Run PostgreSQL container
   docker_container:
-    name: database
+    name: "{{ db_container_name }}"
     image: chaz01/tp-devops-database
     pull: "{{ docker_pull }}"
     recreate: "{{ docker_recreate }}"
@@ -8,7 +8,9 @@
     state: "{{ docker_state }}"
     restart_policy: "{{ docker_restart_policy }}"
     env:
-      POSTGRES_USER: usr
-      POSTGRES_PASSWORD: pwd
+      POSTGRES_USER: "{{ postgres_user }}"
+      POSTGRES_PASSWORD: "{{ postgres_password }}"
     networks:
-      - name: my-network
+      - name: "{{ docker_network }}"
+        aliases:
+          - "{{ db_container_name }}"
